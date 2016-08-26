@@ -18,7 +18,7 @@ def parseResponse( citationMap, content ):
 pubmedIds = []
 citationMap = []
 
-with open('gwas-pubmed-ids.csv') as f:
+with open('pubmed-ids.csv') as f:
     for line in f:
         if line.strip() != "":
             pubmedIds.append(line.strip())
@@ -69,7 +69,7 @@ for pubmedId in pubmedIds:
     count += 1
 
 with open('citation-graph.csv', 'w') as f:
-    writer = csv.writer(f, delimiter='\t')
+    writer = csv.writer(f, delimiter=',')
     writer.writerow(["PUBMED_ID", "CITED_BY"])
     for link in citationMap:
         writer.writerow([link[0], link[1]])
