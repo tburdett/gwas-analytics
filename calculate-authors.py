@@ -13,9 +13,10 @@ def parseResponse( authorMap, content ):
                 authorId = author['authorId']
                 if authorId['type'] == "ORCID":
                     orcid = authorId['value']
-                    fullname = author['fullName']
-                    auth = [pubmedId,orcid,fullname]
-                    authorMap.append(auth)
+                    if 'fullName' in author:
+                        fullname = author['fullName']
+                        auth = [pubmedId,orcid,fullname]
+                        authorMap.append(auth)
     return
 
 pubmedIds = []
